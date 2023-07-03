@@ -1,7 +1,7 @@
 FROM nginx:alpine
 WORKDIR /src/helm
 
-COPY ./charts ./charts
+COPY ./dist ./charts
 COPY ./index.yaml .
 COPY ./robots.txt .
 
