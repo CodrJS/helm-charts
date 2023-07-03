@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  ### KAFKA SETTINGS ###
+  {{- if not (hasKey .Values "kafka") }} 
+    {{- fail "kafka is required in the Values yaml." }}
+  {{- end }}
+  {{- if or .Values.kafka.enabled (not (hasKey .Values.kafka "enabled")) }}
+  KAFKA_ENABLED: true
+  KAFKA_CONSUMER_GROUP: codr.{{ .Values.domain }}.{{ .Release.Name }}.consumer-group
+    {{- else }}
+  # Kafka is disabled
+  {{- end }}
+
+  ### OPENAPI SETTINGS ###
+  {{- if not (hasKey .Values "openapi") }} 
+    {{- fail "openapi is required in the Values yaml." }}
+  {{- end }}
+  {{- if or .Values.openapi.enabled (not (hasKey .Values.openapi "enabled")) }}
+    {{- with .Values.openapi }}
+  OPENAPI_INFO_TITLE: {{ .title | default "Unnamed service" | title | quote }}
+  OPENAPI_INFO_DESC: {{ .desc | default "A microservice built for Codr." | quote }}
+      {{- if not (hasKey . "servers") }} 
+        {{- fail "openapi.servers is required in the Values yaml." }}
+      {{- end }}
+      {{- include "getServers" . | indent 2 }}
+    {{- end }}
+  {{- else }}
+  # OpenAPI is disabled
+  {{- end }}

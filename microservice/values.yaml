@@ -1,0 +1,22 @@
+domain: test
+
+image:
+  name: ghcr.io/codrjs/codr-test-test:1
+  pullPolicy: Always
+
+service:
+  port: 8000
+container:
+  port: 8000
+
+kafka:
+  enabled: true
+  consumerGroup: test.group
+
+openapi:
+  enabled: true
+  title: unnamed service
+  desc: A descirption for this unnamed service
+  servers:
+    - url: http://localhost/v1/docs
+      desc: Localhost
