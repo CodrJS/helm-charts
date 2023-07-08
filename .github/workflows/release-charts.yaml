@@ -71,7 +71,7 @@ jobs:
         run: |
           cd charts
           helm package *
-          helm repo index --url /charts .
+          helm repo index --url https://helm.codrml.com/charts .
       
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
