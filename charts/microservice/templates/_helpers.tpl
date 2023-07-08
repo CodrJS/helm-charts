@@ -4,7 +4,7 @@
 # {{- end }}
 # {{- end }}
 
-##### Get server config
+##### Get server config #####
 {{- define "getServers" }}
 {{- range $index, $value := .servers }}
 {{- if eq $index 0 }}

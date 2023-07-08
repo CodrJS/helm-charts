@@ -1,7 +1,7 @@
 domain: test
 
 image:
-  name: ghcr.io/codrjs/codr-test-test:1
+  name: ghcr.io/codrjs/ts-microservice-template:latest
   pullPolicy: Always
 
 service:

@@ -70,7 +70,7 @@ jobs:
       - name: Package Helm Charts
         run: |
           cd charts
-          helm package microservice
+          helm package *
           helm repo index --url /charts .
       
       - name: Upload Artifact

@@ -1,7 +1,7 @@
 apiVersion: v1
 version: v1.0.0
-name: microservice
-description: A helm-chart for deploying microservices fast.
+name: schema-registry
+description: A helm-chart for deploying a schema-registry.
 home: https://github.com/CodrJS
 maintainers:
   - name: Dylan Bulmer
