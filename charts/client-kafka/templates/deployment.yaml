@@ -1,19 +1,19 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: codr-{{ .Values.domain }}-{{ .Release.Name }}
+  name: codr-{{ .Release.Name }}
   labels:
-    app: codr-{{ .Values.domain }}-{{ .Release.Name }}
+    app: codr-{{ .Release.Name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: codr-{{ .Values.domain }}-{{ .Release.Name }}
+      app: codr-{{ .Release.Name }}
   template:
     metadata:
-      name: codr-{{ .Values.domain }}-{{ .Release.Name }}
+      name: codr-{{ .Release.Name }}
       labels:
-        app: codr-{{ .Values.domain }}-{{ .Release.Name }}
+        app: codr-{{ .Release.Name }}
     spec:
       containers:
         # RESTful API container

@@ -4,6 +4,6 @@ metadata:
   name: codr-{{ .Release.Name }}-configmap
 data:
   {{- include "getKafkaClusters" .Values | indent 2 }}
-  AUTH_TYPE: "LOGIN_FORM"
-  SPRING_SECURITY_USER_NAME: admin
-  SPRING_SECURITY_USER_PASSWORD: password
+  # AUTH_TYPE: "LOGIN_FORM"
+  # SPRING_SECURITY_USER_NAME: {{ .Values.security.username }}
+  # SPRING_SECURITY_USER_PASSWORD: {{ .Values.security.password }}

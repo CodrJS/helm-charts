@@ -4,11 +4,11 @@ metadata:
   name: codr-{{ .Release.Name }}-configmap
 data:
   SCHEMA_REGISTRY_KAFKA_BROKERS:
-    kafka-0.kafka-headless.{{ .Release.Namespace }}.svc.cluster.local:9092,
-    kafka-1.kafka-headless.{{ .Release.Namespace }}.svc.cluster.local:9092,
-    kafka-2.kafka-headless.{{ .Release.Namespace }}.svc.cluster.local:9092
+    PLAINTEXT://kafka-0.kafka-headless.{{ .Release.Namespace }}.svc.cluster.local:9092,
+    PLAINTEXT://kafka-1.kafka-headless.{{ .Release.Namespace }}.svc.cluster.local:9092,
+    PLAINTEXT://kafka-2.kafka-headless.{{ .Release.Namespace }}.svc.cluster.local:9092
   SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL: PLAINTEXT
-  SCHEMA_REGISTRY_SCHEMA_REGISTRY_INTER_INSTANCE_PROTOCOL: "http"
+  SCHEMA_REGISTRY_SCHEMA_REGISTRY_INTER_INSTANCE_PROTOCOL: http
   SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
   SCHEMA_REGISTRY_KAFKASTORE_TOPIC: _schemas
   SCHEMA_REGISTRY_CLIENT_AUTHENTICATION: NONE

@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: codr-kakfa-schema-registry
+  name: {{ .Release.Name }}
 spec:
   replicas: 1
-  serviceName: codr-kakfa-schema-registry
+  serviceName: codr-kafka-{{ .Release.Name }}
   selector:
     matchLabels:
-      app: codr-kakfa-schema-registry
+      app: codr-kafka-{{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: codr-kakfa-schema-registry
+        app: codr-kafka-{{ .Release.Name }}
     spec:
       hostname: schema-registry
       containers:
@@ -28,7 +28,7 @@ spec:
               cpu: "0.5"
               memory: 1Gi
           ports:
-            - containerPort: {{ .Values.container.port }}
+            - containerPort: 8081
           envFrom:
             - configMapRef:
                 name: codr-{{ .Release.Name }}-configmap

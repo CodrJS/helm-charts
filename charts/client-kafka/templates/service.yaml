@@ -7,4 +7,4 @@ spec:
     - name: http
       port: {{ .Values.service.port }}
   selector:
-    app: codr-{{ .Values.domain }}-{{ .Release.Name }}
+    app: codr-{{ .Release.Name }}

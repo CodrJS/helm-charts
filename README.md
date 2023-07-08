@@ -22,7 +22,7 @@ helm install --dry-run --debug RELEASE_NAME ./charts/CHART_NAME -n NAMESPACE
 # Build and index the charts
 cd charts
 helm package *
-helm repo index --url http://helm.codr.local/charts .
+helm repo index --url /charts .
 mv index.yaml ../
 
 # build the docker image

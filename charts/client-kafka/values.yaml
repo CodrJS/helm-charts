@@ -1,4 +1,4 @@
-domain: kafka
+domain: client
 
 image:
   name: provectuslabs/kafka-ui:latest
@@ -11,3 +11,7 @@ container:
 
 kafkaClusters:
   - name: codr-dev
+
+security:
+  username: admin
+  passowrd: password
