@@ -19,5 +19,13 @@ helm install --dry-run --debug RELEASE_NAME ./charts/CHART_NAME -n NAMESPACE
 ### Building charts
 
 ```bash
-helm install --dry-run --debug RELEASE_NAME ./charts/CHART_NAME -n NAMESPACE
+# Build and index the charts
+cd charts
+helm package *
+helm repo index --url http://helm.codr.local/charts .
+mv index.yaml ../
+
+# build the docker image
+cd ../
+docker build -t codr-client-helm . -f Dockerfile.local
 ```
